@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6efba8a9-a407-4029-bdd0-651d22a87386</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TarLib</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Assets\Converters\RectangleGameZoneJsonConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Assets\Converters\RectanglePrimitiveJsonConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Assets\Converters\Vector2JsonConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Assets\EffectAssetManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Camera\IEntityWithCamera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Camera\IEntityWithCameraRotationClamp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Camera\IEntityWithCameraRotationWrap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Camera\IEntityWithCameraXClamp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Camera\IEntityWithCameraXWrap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Camera\IEntityWithCameraYClamp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Camera\IEntityWithCameraYWrap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Camera\IEntityWithCameraZoomBreakpoints.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\CardinalDirection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Commands\FloatCommandData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Commands\BoolCommandData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Commands\IntCommandData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\DrawableEntities\DrawableProgressBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableLineTexture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableBoxTexture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableCircleTexture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableEntityWithAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableEntityWithRotatingAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableString.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableTexture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\EntityInventory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\GameZone.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\ICommandableGameEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Commands\ICommandData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\IClickableEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\IDraggableEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\IDraggableEntityMagnet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\InteractableCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\Primitives\RectangleInteractableEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\Primitives\LineSegmentInteractableEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\Primitives\CircleInteractableEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\IInteractableEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\MultipleInteractableEntities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\SimpleInteractableEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\Primitives\SimplePrimitiveInteractableEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Interactable\SimpleDraggableMagnet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\IQueuableEntityState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\ITickBasedEntityState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Path\Heuristics\DijkstraPathHeuristic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Path\IEntityWithPathProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Path\Heuristics\IPathHeuristic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Path\Heuristics\ManhattanPathHeuristic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Path\PathObstacleChangeEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Path\PathProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\QueuableEntityStatesState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\RepeatEntityStatesState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\ReservationCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ListExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\PointExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\KeyPressEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\KeysExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\KeysList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObservableVariable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\SimpleDrawableGameEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\SimpleRotatingDrawableGameEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EncodingExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\IGameEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Texture2DExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\SimpleGameEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\IEntityState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\EntityStateManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\EntityStateResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\Rotating\CalculateFrameRotatingEntityAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\DrawableEntityAnimationManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\Rotating\LoopingFrameRotatingEntityAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\Rotating\RotatingEntityAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\Rotating\SingleFrameRotatingEntityAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Assets\AssetManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Assets\FontAssetManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Assets\TextureAssetManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Movement\IMoveableEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\IntegerExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\EffectDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\MouseScrollWheelChangeEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\NetworkHost.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Camera\CameraEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Encoding\IEncodable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\DrawableEntityAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Knowledge\IKnowledgeEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FastNoiseLite.cs">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SpriteBatchExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\StringDrawInstructions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\_old\Texture2DLayeredTileMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\_old\Texture2DLayeredTile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2DMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2DDrawInstructions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\InputManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\MouseStateExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\MouseButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Knowledge\EntityKnowledge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObservableList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Primitives\CirclePrimitive.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Primitives\IPrimitive.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Primitives\LinePrimitive.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Primitives\LineRayPrimitive.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Primitives\LineSegmentPrimitive.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Primitives\RectanglePrimitive.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\IGameMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\IMenuBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuHorizontalLine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuImageButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuInputContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuInputLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuNumberInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuNumberInputContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuRadioButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuRadioButtonContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuTextButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuTextInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuVector2InputContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\ScrollStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\BorderSizeStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\BorderColorStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\MenuBlockStyleTypeList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\MenuBlockStyleType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\MenuBlockStyleRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\MenuBlockStyleTagList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\SizeStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\GameMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\MouseClickEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\MouseMoveEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\AlignStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\ContentDirectionStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\MenuBlockStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\MarginStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\MenuBlockStylesManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\PaddingStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\GameState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\IGameState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Windows\DialogueErrorMenuWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Windows\DialogueConfirmMenuWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Windows\InterfaceMenuWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Windows\DialogueLoadMenuWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Windows\IMenuWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Windows\IMenuWindowContents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Windows\IMenuWindowTitleBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Windows\MenuWindowContents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Windows\MenuWindowTitleBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Types\IntroGameState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Types\SimpleGameState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Views\GameStateInteractableView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Views\GameStateView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Views\IGameStateView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Views\Layers\GameStateViewLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Views\Layers\IGameStateViewLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TarGame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TarLibSeed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TwoDimDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Vector2Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Vector3Extensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Entities\Path\Heuristics\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Graphics\_old\" />
+    <Folder Include="$(MSBuildThisFileDirectory)States\Menu\Containers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Content\Textures\down.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Content\Textures\up.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>
