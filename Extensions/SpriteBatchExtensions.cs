@@ -37,7 +37,7 @@ namespace TarLib.Extensions {
             }
         }
 
-        public static void Draw(this SpriteBatch spriteBatch, IDrawableCircleTexture circle, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
+        public static void Draw(this SpriteBatch spriteBatch, IDrawableCircle circle, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
             if(circle.CircleDrawVisible) {
                 
                 if (circle.CircleBorderColor.A > 0 && circle.CircleBorderWidth > 0) {
@@ -67,7 +67,7 @@ namespace TarLib.Extensions {
         }
 
         
-        public static void Draw(this SpriteBatch spriteBatch, IDrawableBoxTexture box, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
+        public static void Draw(this SpriteBatch spriteBatch, IDrawableBox box, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
             if (box.BoxDrawVisible) {
                 var boxSize = new Vector2(box.BoxDrawWidth, box.BoxDrawHeight);
                 if(box.BoxBorderColor.A > 0 && box.BoxBorderSize.TotalHorizontal != 0 || box.BoxBorderSize.TotalVertical != 0) {
@@ -96,7 +96,7 @@ namespace TarLib.Extensions {
             }
         }
 
-        public static void Draw(this SpriteBatch spriteBatch, IDrawableLineTexture line, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
+        public static void Draw(this SpriteBatch spriteBatch, IDrawableLine line, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
             if (line.LineDrawVisible) {
                 var lineSegment = new LineSegmentPrimitive(line.LineStart, line.LineEnd);
                 var lineSize = new Vector2(lineSegment.Length, line.LineThickness);

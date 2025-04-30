@@ -1,11 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TarLib.Extensions;
-using TarLib.States;
 
-namespace TarLib.Entities.Drawable {
+namespace TarLib.Graphics {
 
-    public interface IDrawableCircleTexture {
+    public interface IDrawableCircle {
         bool CircleDrawVisible { get; }
         Texture2D CircleDrawTexture { get; }
         Vector2 CircleDrawCenter { get; }

@@ -1,10 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TarLib.Extensions;
 using TarLib.States;
 
-namespace TarLib.Entities.Drawable {
-    public interface IDrawableBoxTexture {
+namespace TarLib.Graphics {
+    public interface IDrawableBox {
         bool BoxDrawVisible { get; }
 
         Texture2D BoxDrawTexture { get; }

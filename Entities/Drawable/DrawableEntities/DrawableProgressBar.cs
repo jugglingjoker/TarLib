@@ -36,7 +36,7 @@ namespace TarLib.Entities.Drawable {
             }
         }
 
-        public class BackgroundTexture : IDrawableBoxTexture {
+        public class BackgroundTexture : IDrawableBox {
             private DrawableProgressBar progressBar;
 
             public BackgroundTexture(DrawableProgressBar progressBar) {
@@ -55,7 +55,7 @@ namespace TarLib.Entities.Drawable {
             public float BoxBorderDrawDepth => 0.33f;
         }
 
-        public class ProgressTexture : IDrawableBoxTexture {
+        public class ProgressTexture : IDrawableBox {
             private DrawableProgressBar progressBar;
 
             public ProgressTexture(DrawableProgressBar progressBar) {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TarLib.Entities.Drawable {
-    public interface IDrawableString {
-        SpriteFont DrawFont { get; }
-        string DrawText { get; }
+namespace TarLib.Graphics {
+    public interface IDrawableTexture {
+        Texture2D DrawTexture { get; }
+        Rectangle? DrawTextureFrame { get; }
         Vector2 DrawOrigin { get; }
         float DrawRotation { get; }
         Vector2 DrawScale { get; }
