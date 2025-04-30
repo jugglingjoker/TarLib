@@ -113,52 +113,7 @@ namespace TarLib.Extensions {
             }
         }
 
-        /*
-        public static void Draw(this SpriteBatch spriteBatch, IDrawableLine line, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
-            if (line.DrawVisible) {
-                // draw border if necessary
-                // draw inner box
-            }
-        }
-        */
-
-        /*
-        // Draw texture2d map
-        public static void Draw(this SpriteBatch spriteBatch, Texture2DMap texture, Vector2 position, Color color, float rotation, Vector2 origin, float scale, float layerDepth) {
-            spriteBatch.Draw(
-                texture: texture,
-                position: position,
-                color: color,
-                rotation: rotation,
-                origin: origin,
-                scale: new Vector2(scale),
-                layerDepth: layerDepth);
-        }
-
-        public static void Draw(this SpriteBatch spriteBatch, Texture2DMap texture, Vector2 position, Color color, float rotation, Vector2 origin, Vector2 scale, float layerDepth) {
-            // TODO: Determine which range to draw based on rectangle bounds
-            for (int i = texture.MinQuadX; i <= texture.MaxQuadX; i++) {
-                for (int j = texture.MinQuadY; j <= texture.MaxQuadY; j++) {
-                    if (texture[i, j] != default) {
-                        var cornerPosition = Vector2.Transform((new Vector2(i * texture.SegmentSize, j * texture.SegmentSize) - origin) * scale, Matrix.CreateRotationZ(rotation));
-                        spriteBatch.Draw(
-                            texture: texture[i, j],
-                            position: cornerPosition + position,
-                            sourceRectangle: null,
-                            color: color,
-                            rotation: rotation,
-                            origin: Vector2.Zero,
-                            scale: scale,
-                            effects: SpriteEffects.None,
-                            layerDepth: layerDepth);
-                    }
-                }
-            }
-        }
-        */
-
-        /*
-        public static void Draw(this SpriteBatch spriteBatch, StaticTextureMap texture, Vector2 position, Color color, float rotation, Vector2 origin, Vector2 scale, float layerDepth) {
+        public static void Draw(this SpriteBatch spriteBatch, SimpleStaticTextureMap texture, Vector2 position, Color color, float rotation, Vector2 origin, Vector2 scale, float layerDepth) {
             // TODO: Determine which range to draw based on rectangle bounds
             for (int i = texture.MinQuadX; i <= texture.MaxQuadX; i++) {
                 for (int j = texture.MinQuadY; j <= texture.MaxQuadY; j++) {
@@ -178,7 +133,6 @@ namespace TarLib.Extensions {
                 }
             }
         }
-        */
 
         // TODO: Give better definition
         public static void Draw(this SpriteBatch spriteBatch,
