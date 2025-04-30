@@ -62,6 +62,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ReservationCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ListExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\PointExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\SimpleStaticStringEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\SimpleStaticTextureMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeyPressEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeysExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeysList.cs" />
@@ -101,7 +103,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\StringDrawInstructions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\_old\Texture2DLayeredTileMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\_old\Texture2DLayeredTile.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2DMap.cs" />
+    <Compile Include="..\TarLib\Graphics\SimpleStaticTextureEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2DDrawInstructions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\InputManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\MouseStateExtensions.cs" />

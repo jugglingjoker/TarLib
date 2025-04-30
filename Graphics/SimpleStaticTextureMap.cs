@@ -1,102 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using TarLib.Entities.Drawable;
-using TarLib.Extensions;
 
 namespace TarLib.Graphics {
-
-    public class SimpleStaticTextureEntity : IDrawableEntity {
-        private SimpleStaticTexture texture;
-
-        public SimpleStaticTextureEntity() {
-            texture = new(this);
-        }
-
-        public Texture2D DrawTexture { get; set; } = default;
-        public Rectangle? DrawTextureFrame { get; set; } = default;
-        public Vector2 DrawOrigin { get; set; } = Vector2.Zero;
-        public float DrawRotation { get; set; } = 0;
-        public Vector2 DrawScale { get; set; } = Vector2.One;
-        public SpriteEffects DrawEffects { get; set; } = SpriteEffects.None;
-        public Color DrawColor { get; set; } = Color.White;
-        public Vector2 DrawPosition { get; set; } = Vector2.Zero;
-        public float DrawDepth { get; set; } = 0;
-        public bool DrawVisible { get; set; } = true;
-
-        public float DrawWidth => (texture.DrawTextureFrame?.Width ?? texture.DrawTexture.Width) * DrawScale.X;
-        public float DrawHeight => (texture.DrawTextureFrame?.Height ?? texture.DrawTexture.Height) * DrawScale.Y;
-
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position = default, float startDepth = 0, float endDepth = -1) {
-            spriteBatch.Draw(texture, position, startDepth, endDepth);
-        }
-
-        private class SimpleStaticTexture : IDrawableTexture {
-            public SimpleStaticTexture(SimpleStaticTextureEntity entity) {
-                Entity = entity;
-            }
-
-            public SimpleStaticTextureEntity Entity { get; }
-            public Texture2D DrawTexture => Entity.DrawTexture;
-            public Rectangle? DrawTextureFrame => Entity.DrawTextureFrame;
-            public Vector2 DrawOrigin => Entity.DrawOrigin;
-            public float DrawRotation => Entity.DrawRotation;
-            public Vector2 DrawScale => Entity.DrawScale;
-            public SpriteEffects DrawEffects => Entity.DrawEffects;
-            public Color DrawColor => Entity.DrawColor;
-            public Vector2 DrawPosition => Entity.DrawPosition;
-            public float DrawDepth => Entity.DrawDepth;
-            public bool DrawVisible => Entity.DrawVisible;
-        }
-    }
-
-    public class SimpleStaticStringEntity : IDrawableEntity {
-        private SimpleStaticString texture;
-
-        public SimpleStaticStringEntity() {
-            texture = new(this);
-        }
-
-        public Vector2 DrawOrigin { get; set; } = Vector2.Zero;
-        public float DrawRotation { get; set; } = 0;
-        public Vector2 DrawScale { get; set; } = Vector2.One;
-        public SpriteEffects DrawEffects { get; set; } = SpriteEffects.None;
-        public Color DrawColor { get; set; } = Color.White;
-        public Vector2 DrawPosition { get; set; } = Vector2.Zero;
-        public float DrawDepth { get; set; } = 0;
-        public bool DrawVisible { get; set; } = true;
-        public SpriteFont DrawFont { get; set; } = default;
-        public string DrawText { get; set; } = "";
-
-        public float DrawWidth => texture.DrawFont.MeasureString(DrawText).X;
-        public float DrawHeight => texture.DrawFont.MeasureString(DrawText).Y;
-
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position = default, float startDepth = 0, float endDepth = -1) {
-            spriteBatch.Draw(texture, position, startDepth, endDepth);
-        }
-
-        private class SimpleStaticString : IDrawableString {
-            public SimpleStaticString(SimpleStaticStringEntity entity) {
-                Entity = entity;
-            }
-
-            public SimpleStaticStringEntity Entity { get; }
-
-            public SpriteFont DrawFont => Entity.DrawFont;
-            public string DrawText => Entity.DrawText;
-            public Vector2 DrawOrigin => Entity.DrawOrigin;
-            public float DrawRotation => Entity.DrawRotation;
-            public Vector2 DrawScale => Entity.DrawScale;
-            public SpriteEffects DrawEffects => Entity.DrawEffects;
-            public Color DrawColor => Entity.DrawColor;
-            public Vector2 DrawPosition => Entity.DrawPosition;
-            public float DrawDepth => Entity.DrawDepth;
-            public bool DrawVisible => Entity.DrawVisible;
-        }
-    }
-
-    public class StaticTextureMap : IDrawableEntity {
+    public class SimpleStaticTextureMap : IDrawableEntity {
         private const uint DEFAULT_SIZE = 1000;
 
         private TwoDimGrid<StaticTextureMapQuadrant> quads = new();
@@ -122,7 +30,7 @@ namespace TarLib.Graphics {
         public float DrawRotation { get; set; } = 0;
         public Color DrawColor { get; set; } = Color.White;
 
-        public StaticTextureMap(GraphicsDevice graphicsDevice, uint quadrantSize = DEFAULT_SIZE) {
+        public SimpleStaticTextureMap(GraphicsDevice graphicsDevice, uint quadrantSize = DEFAULT_SIZE) {
             GraphicsDevice = graphicsDevice;
             QuadrantSize = (int)quadrantSize;
         }
@@ -196,7 +104,7 @@ namespace TarLib.Graphics {
         }
 
         private class StaticTextureMapQuadrant {
-            public StaticTextureMap Map { get; }
+            public SimpleStaticTextureMap Map { get; }
             public int X { get; }
             public int Y { get; }
 
@@ -231,7 +139,7 @@ namespace TarLib.Graphics {
                 }
             }
 
-            public StaticTextureMapQuadrant(StaticTextureMap map, int x, int y) {
+            public StaticTextureMapQuadrant(SimpleStaticTextureMap map, int x, int y) {
                 Map = map;
                 X = x;
                 Y = y;
