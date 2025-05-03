@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TarLib.Extensions;
 using Microsoft.Xna.Framework.Input;
+using TarLib.Graphics;
 
 namespace TarLib.States {
 
@@ -339,8 +340,8 @@ namespace TarLib.States {
                 // do nothing
             }
 
-            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
-                spriteBatch.Draw(Texture, position, startDepth, endDepth);
+            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 positionOffset = default, float startDepth = 0, float endDepth = 1) {
+                spriteBatch.Draw(Texture, positionOffset, startDepth, endDepth);
             }
 
             public class TargetTexture : IDrawableTexture {
