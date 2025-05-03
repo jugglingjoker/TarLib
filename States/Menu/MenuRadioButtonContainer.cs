@@ -6,14 +6,19 @@ using TarLib.Input;
 
 namespace TarLib.States {
 
-    public class MenuRadioButtonContainer<TValueType> : MenuRadioButtonContainer<TValueType, MenuRadioButton<TValueType>> {
+    public class MenuRadioButtonContainer<TValueType> : MenuRadioButtonContainer<TValueType, MenuRadioButton<TValueType>>, IEquatable<TValueType>
+        where TValueType : IEquatable<TValueType> {
         
         public MenuRadioButtonContainer(IGameMenu menu = null, Dictionary<TValueType, string> values = null, TValueType defaultValue = default) : base(menu, values, defaultValue) {
         
         }
+
+        public override bool Equals(TValueType other) {
+            return SelectedValue?.Equals(other) ?? false;
+        }
     }
 
-    public class MenuRadioButtonContainer<TValueType, TRadioButton> : MenuContainer<TRadioButton>
+    public abstract class MenuRadioButtonContainer<TValueType, TRadioButton> : MenuContainer<TRadioButton>
         where TRadioButton : IMenuRadioButton<TValueType>, new() {
 
         public MenuRadioButtonContainer(
@@ -41,7 +46,7 @@ namespace TarLib.States {
             set {
                 blocks.ForEach(menuBlock => menuBlock.IsSelected = false);
                 foreach (var menuBlock in MenuBlocks) {
-                    if (menuBlock.Equals(value)) {
+                    if (menuBlock.Value.Equals(value)) {
                         menuBlock.IsSelected = true;
                         SelectedButton = menuBlock;
                         return;
@@ -55,7 +60,7 @@ namespace TarLib.States {
         public event EventHandler<(TValueType oldValue, TValueType newValue)> OnChange;
 
         private void SelectedButton_OnChange(object sender, (TRadioButton oldValue, TRadioButton newValue) e) {
-            OnChange?.Invoke(this, (e.oldValue != null ? e.oldValue.Value : default, e.newValue.Value));
+            OnChange?.Invoke(this, (e.oldValue != null ? e.oldValue.Value : default, e.newValue != null ? e.newValue.Value : default));
         }
 
         public void SetValues(Dictionary<TValueType, string> values, TValueType value) {
@@ -88,5 +93,7 @@ namespace TarLib.States {
                 }
             }
         }
+
+        public abstract bool Equals(TValueType value);
     }
 }
