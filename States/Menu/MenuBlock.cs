@@ -41,8 +41,6 @@ namespace TarLib.States {
             DefaultStyle = new();
         }
 
-        
-
         public virtual IGameMenu Menu {
             get => Parent?.Menu ?? menu.Value;
             set => menu.Value = value;
@@ -68,7 +66,6 @@ namespace TarLib.States {
             }
         }
 
-        
         public MenuBlockStyleRule ActiveStyleRule {
             get {
                 if(cachedActiveStyleRule == null) {

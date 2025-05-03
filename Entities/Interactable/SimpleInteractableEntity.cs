@@ -9,12 +9,16 @@ using TarLib.Primitives;
 using TarLib.States;
 
 namespace TarLib.Entities.Interactable { 
-    public abstract class SimpleInteractableEntity : IDraggableEntity, IClickableEntity{
+    public abstract class SimpleInteractableEntity : IDrawableEntity, IDraggableEntity, IClickableEntity {
         public IGameStateInteractableView BaseView { get; }
 
         public Vector2 OriginalPosition { get; private set; }
         public Vector2 DragStartPosition { get; private set; }
         public abstract Vector2 Position { get; set; }
+
+        public abstract Vector2 DrawPosition { get; }
+        public abstract float DrawWidth { get; }
+        public abstract float DrawHeight { get; }
 
         public virtual float MinX => float.MinValue;
         public virtual float MaxX => float.MaxValue;
@@ -67,5 +71,6 @@ namespace TarLib.Entities.Interactable {
         public abstract bool IsAt(Vector2 position);
         public abstract bool IsBetween(RectanglePrimitive selection);
         public virtual IInteractableEntity GetElements(RectanglePrimitive? selection = null) => this;
+        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 positionOffset = default, float startDepth = 0, float endDepth = 1);
     }
 }
