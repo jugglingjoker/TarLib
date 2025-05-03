@@ -15,6 +15,10 @@ namespace TarLib.States {
 
         }
 
+        public void SetText(string text) {
+            Source.Text = text;
+        }
+
         public class TextSource : IMenuTextSource {
             public TextSource(string text) {
                 Text = text;
