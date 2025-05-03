@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using TarLib.Input;
 
 namespace TarLib.States {
@@ -10,7 +11,6 @@ namespace TarLib.States {
     }
 
     public class MenuRadioButton<TValueType> : MenuContainer, IMenuRadioButton<TValueType> {
-
         public MenuRadioButton() : base(default) {
             Indicator = new IndicatorImage(this);
             Label = new InputLabel(this, "");
@@ -39,6 +39,8 @@ namespace TarLib.States {
         public TValueType Value { get; set; }
 
         protected override MenuBlockStyleTypeList StyleTypes => MenuBlockStyleType.RadioButton;
+
+        public override bool CanUseLeftMouseButton => true;
 
         public class IndicatorImage : MenuImage {
             public MenuRadioButton<TValueType> RadioButton { get; }
