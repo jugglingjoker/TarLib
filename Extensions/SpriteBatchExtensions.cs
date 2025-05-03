@@ -7,11 +7,11 @@ using TarLib.Primitives;
 namespace TarLib.Extensions {
     public static class SpriteBatchExtensions {
 
-        public static void Draw(this SpriteBatch spriteBatch, IDrawableTexture entity, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
+        public static void Draw(this SpriteBatch spriteBatch, IDrawableTexture entity, Vector2 positionOffset = default, float startDepth = 0, float endDepth = 1) {
             if(entity.DrawVisible) {
                 spriteBatch.Draw(
                     texture: entity.DrawTexture,
-                    position: entity.DrawPosition + position,
+                    position: entity.DrawPosition + positionOffset,
                     sourceRectangle: entity.DrawTextureFrame,
                     color: entity.DrawColor,
                     rotation: entity.DrawRotation,
@@ -22,12 +22,12 @@ namespace TarLib.Extensions {
             }
         }
 
-        public static void Draw(this SpriteBatch spriteBatch, IDrawableString entity, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
+        public static void Draw(this SpriteBatch spriteBatch, IDrawableString entity, Vector2 positionOffset = default, float startDepth = 0, float endDepth = 1) {
             if(entity.DrawVisible) {
                 spriteBatch.DrawString(
                     spriteFont: entity.DrawFont,
                     text: entity.DrawText,
-                    position: entity.DrawPosition + position,
+                    position: entity.DrawPosition + positionOffset,
                     color: entity.DrawColor,
                     rotation: entity.DrawRotation,
                     origin: entity.DrawOrigin,
@@ -37,13 +37,13 @@ namespace TarLib.Extensions {
             }
         }
 
-        public static void Draw(this SpriteBatch spriteBatch, IDrawableCircle circle, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
+        public static void Draw(this SpriteBatch spriteBatch, IDrawableCircle circle, Vector2 positionOffset = default, float startDepth = 0, float endDepth = 1) {
             if(circle.CircleDrawVisible) {
                 
                 if (circle.CircleBorderColor.A > 0 && circle.CircleBorderWidth > 0) {
                     spriteBatch.Draw(
                         texture: circle.CircleDrawTexture,
-                        position: circle.CircleDrawCenter + position,
+                        position: circle.CircleDrawCenter + positionOffset,
                         sourceRectangle: default,
                         color: circle.CircleBorderColor,
                         rotation: 0,
@@ -55,7 +55,7 @@ namespace TarLib.Extensions {
 
                 spriteBatch.Draw(
                     texture: circle.CircleDrawTexture,
-                    position: circle.CircleDrawCenter + position,
+                    position: circle.CircleDrawCenter + positionOffset,
                     sourceRectangle: default,
                     color: circle.CircleColor,
                     rotation: 0,
@@ -67,13 +67,13 @@ namespace TarLib.Extensions {
         }
 
         
-        public static void Draw(this SpriteBatch spriteBatch, IDrawableBox box, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
+        public static void Draw(this SpriteBatch spriteBatch, IDrawableBox box, Vector2 positionOffset = default, float startDepth = 0, float endDepth = 1) {
             if (box.BoxDrawVisible) {
                 var boxSize = new Vector2(box.BoxDrawWidth, box.BoxDrawHeight);
                 if(box.BoxBorderColor.A > 0 && box.BoxBorderSize.TotalHorizontal != 0 || box.BoxBorderSize.TotalVertical != 0) {
                     spriteBatch.Draw(
                         texture: box.BoxDrawTexture,
-                        position: box.BoxDrawPosition + position,
+                        position: box.BoxDrawPosition + positionOffset,
                         sourceRectangle: default,
                         color: box.BoxBorderColor,
                         rotation: 0,
@@ -85,7 +85,7 @@ namespace TarLib.Extensions {
 
                 spriteBatch.Draw(
                     texture: box.BoxDrawTexture,
-                    position: box.BoxDrawPosition + position + box.BoxBorderSize.Position,
+                    position: box.BoxDrawPosition + box.BoxBorderSize.Position + positionOffset,
                     sourceRectangle: default,
                     color: box.BoxColor,
                     rotation: 0,
@@ -96,13 +96,13 @@ namespace TarLib.Extensions {
             }
         }
 
-        public static void Draw(this SpriteBatch spriteBatch, IDrawableLine line, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
+        public static void Draw(this SpriteBatch spriteBatch, IDrawableLine line, Vector2 positionOffset = default, float startDepth = 0, float endDepth = 1) {
             if (line.LineDrawVisible) {
                 var lineSegment = new LineSegmentPrimitive(line.LineStart, line.LineEnd);
                 var lineSize = new Vector2(lineSegment.Length, line.LineThickness);
                 spriteBatch.Draw(
                     texture: line.LineDrawTexture,
-                    position: lineSegment.Center + position,
+                    position: lineSegment.Center + positionOffset,
                     sourceRectangle: default,
                     color: line.LineColor,
                     rotation: lineSegment.Angle,
@@ -136,7 +136,7 @@ namespace TarLib.Extensions {
 
         // TODO: Give better definition
         public static void Draw(this SpriteBatch spriteBatch,
-            Texture2DLayeredTileMap textureMap,
+            Texture2DLayeredTileMap tileMap,
             Vector2 position,
             Rectangle? sourceRectangle,
             Color color,
@@ -146,12 +146,12 @@ namespace TarLib.Extensions {
             SpriteEffects effects,
             float layerDepth) {
 
-            for (int i = 0; i < textureMap.MapWidth; i++) {
-                for (int j = 0; j < textureMap.MapHeight; j++) {
-                    if (textureMap[i, j] != null) {
+            for (int i = 0; i < tileMap.MapWidth; i++) {
+                for (int j = 0; j < tileMap.MapHeight; j++) {
+                    if (tileMap[i, j] != null) {
                         spriteBatch.Draw(
-                            texture: textureMap[i, j],
-                            position: position + new Vector2(textureMap.TextureChunkWidth * i, textureMap.TextureChunkWidth * j) * scale,
+                            texture: tileMap[i, j],
+                            position: position + new Vector2(tileMap.TextureChunkWidth * i, tileMap.TextureChunkWidth * j) * scale,
                             sourceRectangle: sourceRectangle,
                             color: color,
                             rotation: rotation,
