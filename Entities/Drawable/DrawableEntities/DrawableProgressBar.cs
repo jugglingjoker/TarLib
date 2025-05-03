@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using TarLib.Extensions;
+using TarLib.Graphics;
 using TarLib.States;
 
 namespace TarLib.Entities.Drawable {
@@ -29,10 +30,10 @@ namespace TarLib.Entities.Drawable {
 
         public virtual bool IsVisible { get; }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position = default, float startDepth = 0, float endDepth = 1) {
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 positionOffset = default, float startDepth = 0, float endDepth = 1) {
             if(IsVisible) {
-                spriteBatch.Draw(background, position, startDepth, endDepth);
-                spriteBatch.Draw(progress, position, startDepth, endDepth);
+                spriteBatch.Draw(background, positionOffset, startDepth, endDepth);
+                spriteBatch.Draw(progress, positionOffset, startDepth, endDepth);
             }
         }
 
