@@ -111,6 +111,8 @@ namespace TarLib.States {
 
         public Vector2 ActualOffset { get; set; } = Vector2.Zero;
 
+        public override bool CanUseLeftMouseButton => true;
+
         protected override void DrawContent(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position, float startDepth, float endDepth) {
             base.DrawContent(gameTime, spriteBatch, position, startDepth, endDepth);
             spriteBatch.Draw(Cursor, position, startDepth, endDepth);
