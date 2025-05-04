@@ -1,7 +1,8 @@
 ﻿using System;
 
 namespace TarLib.Entities.Drawable {
-    public abstract class DrawableEntityAnimation<TEntity>
+
+    public abstract class DrawableEntityAnimation<TEntity> : IDrawableEntityAnimation
         where TEntity : IDrawableEntityWithAnimation {
         private static Random Random;
         protected static double RandomMod => Random.NextDouble();
