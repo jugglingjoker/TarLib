@@ -26,13 +26,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Commands\BoolCommandData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Commands\IntCommandData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\DrawableEntities\DrawableProgressBar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableLineTexture.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableBoxTexture.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableCircleTexture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableEntityAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\SimpleDrawableGameEntityNoAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IDrawableLine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IDrawableBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IDrawableCircle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableEntityWithAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableEntityWithRotatingAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableString.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\IDrawableTexture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IDrawableString.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IDrawableTexture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\EntityInventory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\GameZone.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ICommandableGameEntity.cs" />
@@ -69,7 +71,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeysList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObservableVariable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\SimpleDrawableGameEntity.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\SimpleRotatingDrawableGameEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\SimpleDrawableGameEntityWithRotation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EncodingExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\IGameEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Texture2DExtensions.cs" />
@@ -103,7 +105,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\StringDrawInstructions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\_old\Texture2DLayeredTileMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\_old\Texture2DLayeredTile.cs" />
-    <Compile Include="..\TarLib\Graphics\SimpleStaticTextureEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\SimpleStaticTextureEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2DDrawInstructions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\InputManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\MouseStateExtensions.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuNumberInputContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuRadioButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuRadioButtonContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuRadioButtonContainerEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuTextButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuTextInput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuVector2InputContainer.cs" />
