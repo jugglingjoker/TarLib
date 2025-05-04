@@ -2,7 +2,7 @@
 
 namespace TarLib.Entities {
 
-    public abstract class SimpleGameEntity<TCommandTypesEnum, TStateTypesEnum> : ICommandableGameEntity<TCommandTypesEnum, TStateTypesEnum>
+    public abstract class SimpleGameEntity<TCommandTypesEnum, TStateTypesEnum> : ICommandableGameEntity<TCommandTypesEnum, TStateTypesEnum>, IGameEntity<TStateTypesEnum>
         where TCommandTypesEnum : Enum
         where TStateTypesEnum : Enum {
 
@@ -22,6 +22,10 @@ namespace TarLib.Entities {
         public SimpleGameEntity() {
             state.OnChange += State_OnChange;
             StateManager = new EntityStateManager<IGameEntity<TStateTypesEnum>, TStateTypesEnum>(this, DefaultState);
+        }
+
+        public virtual void Update(float elapsedTime) {
+
         }
 
         private void State_OnChange(object sender, (IEntityState<TStateTypesEnum> oldValue, IEntityState<TStateTypesEnum> newValue) e) {
