@@ -25,7 +25,7 @@ namespace TarLib.Entities {
         }
 
         public virtual void Update(float elapsedTime) {
-
+            StateManager.Update(elapsedTime);
         }
 
         private void State_OnChange(object sender, (IEntityState<TStateTypesEnum> oldValue, IEntityState<TStateTypesEnum> newValue) e) {
