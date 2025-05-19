@@ -13,9 +13,5 @@ namespace TarLib.Assets {
         protected override SpriteFont GetAssetByFilename(string filename) {
             return Game.Content.Load<SpriteFont>(filename);
         }
-
-        public override void UnloadDefault() {
-            // Default asset disposed by content manager
-        }
     }
 }

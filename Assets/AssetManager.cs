@@ -36,9 +36,7 @@ namespace TarLib.Assets {
         public abstract TAsset LoadDefault();
 
         public virtual void UnloadContent() {
-            UnloadDefault();
+            
         }
-
-        public abstract void UnloadDefault();
     }
 }

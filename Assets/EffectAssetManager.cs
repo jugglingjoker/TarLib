@@ -13,9 +13,5 @@ namespace TarLib.Assets {
         protected override Effect GetAssetByFilename(string filename) {
             return Game.Content.Load<Effect>(filename);
         }
-
-        public override void UnloadDefault() {
-            // Default asset disposed by content manager
-        }
     }
 }
