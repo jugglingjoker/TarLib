@@ -54,7 +54,15 @@ namespace TarLib.Entities {
             QueueEnd();
         }
 
+        public void Clear() {
+            QueueClear();
+        }
+
         public virtual void QueueEnd() {
+
+        }
+
+        public virtual void QueueClear() {
 
         }
     }

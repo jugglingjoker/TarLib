@@ -9,5 +9,6 @@ namespace TarLib.Entities {
         void Start();
         EntityStateResponse Update(float appliedTime);
         void End();
+        void Clear();
     }
 }

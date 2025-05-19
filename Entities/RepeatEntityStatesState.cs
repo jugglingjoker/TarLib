@@ -64,9 +64,15 @@ namespace TarLib.Entities {
             LoopEnd();
         }
 
+        public void Clear() {
+            LoopClear();
+        }
+
         public virtual void LoopEnd() {
 
         }
+
+        public virtual void LoopClear() => LoopEnd();
 
         public abstract bool CanContinueRepeating { get; }
     }

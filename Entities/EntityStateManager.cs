@@ -47,7 +47,7 @@ namespace TarLib.Entities {
                     if (!action.CanBeCleared) {
                         actionsToKeep.Enqueue(action);
                     } else {
-                        action.End();
+                        action.Clear();
                     }
                 }
                 while (actionsToKeep.Count > 0) {
@@ -67,6 +67,7 @@ namespace TarLib.Entities {
                 IsCurrentlyUpdating = false;
 
                 if (!keepRunning && Queue.Count > 0) {
+                    Queue.Peek().End();
                     Queue.Dequeue();
                 }
                 if (PendingClearRequest) {
