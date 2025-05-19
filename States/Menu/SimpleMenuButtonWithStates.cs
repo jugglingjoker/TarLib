@@ -1,23 +1,37 @@
 ﻿using System;
+using System.Linq;
 
 namespace TarLib.States {
     public class SimpleMenuButtonWithStates<TState> : MenuButtonWithStates<TState, SimpleMenuButtonWithStates<TState>.ButtonLabel>
         where TState : Enum {
 
-        public override TState State => throw new NotImplementedException();
-        public override ButtonLabel DefaultLabel => throw new NotImplementedException();
+        private ObservableVariable<TState> state;
+        private ButtonLabel buttonLabel;
 
-        public class ButtonLabel : MenuText<ButtonLabel.TextSource> {
-            private SimpleMenuButtonWithStates<TState> button;
-
-            public ButtonLabel(SimpleMenuButtonWithStates<TState> button, IGameMenu menu = null) : base(source: new TextSource(), false, menu) {
-                this.button = button;
-                Source.ButtonLabel = this;
+        public SimpleMenuButtonWithStates(TState defaultState = default, IGameMenu menu = default) : base(menu) {
+            state = new(defaultState);
+            
+            foreach(var name in Enum.GetNames(typeof(TState))) {
+                object parsed;
+                if(Enum.TryParse(typeof(TState), name, out parsed) && parsed is TState enumValue) {
+                    labels.Add(enumValue, new ButtonLabel(enumValue, menu));
+                    labels[enumValue].IsVisible = enumValue.Equals(defaultState);
+                }
             }
+        }
 
-            public class TextSource : IMenuTextSource {
-                public ButtonLabel ButtonLabel { get; set; }
-                public string Text => ButtonLabel?.button?.State.ToString() ?? "";
+        public override TState State => state;
+        public override ButtonLabel DefaultLabel => buttonLabel;
+
+        public void SetState(TState state) {
+            this.state.Value = state;
+            labels.Where(kvp => !kvp.Key.Equals(state)).Select(kvp => kvp.Value).ToList().ForEach(label => label.IsVisible = false);
+            labels[state].IsVisible = true;
+        }
+
+        public class ButtonLabel : MenuText {
+            public ButtonLabel(TState state, IGameMenu menu = null) : base(text: state.ToString(), false, menu) {
+                
             }
         }
     }

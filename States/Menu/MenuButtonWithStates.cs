@@ -4,7 +4,7 @@ namespace TarLib.States {
     public abstract class MenuButtonWithStates<TState, TButtonLabel> : MenuButton
         where TButtonLabel : IMenuBlock {
 
-        private Dictionary<TState, TButtonLabel> labels = new();
+        protected Dictionary<TState, TButtonLabel> labels = new();
 
         public abstract TState State { get; }
         public abstract TButtonLabel DefaultLabel { get; }
