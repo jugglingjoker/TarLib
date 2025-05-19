@@ -69,6 +69,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeyPressEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeysExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeysList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObservableDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObservableVariable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\SimpleDrawableGameEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Drawable\SimpleDrawableGameEntityWithRotation.cs" />
@@ -120,6 +121,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Primitives\RectanglePrimitive.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\IGameMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\IMenuBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuButtonInputContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuButtonsList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuButtonsListInputContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuButtonWithStates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuHorizontalLine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuImageButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuInput.cs" />
@@ -132,7 +137,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuRadioButtonContainerEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuTextButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuTextInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuToggleButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\MenuVector2InputContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\Menu\SimpleMenuButtonWithStates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\ScrollStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\BorderSizeStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\Menu\Styles\BorderColorStyle.cs" />
@@ -187,6 +194,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Content\Textures\down.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Content\Textures\pause_button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Content\Textures\play_button.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)Content\Textures\up.png">

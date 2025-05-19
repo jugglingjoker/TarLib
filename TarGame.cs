@@ -92,8 +92,10 @@ namespace TarLib {
             Textures.LoadContent();
             Effects.LoadContent();
 
-            Textures.Add("up_arrow", "Content//Textures//up.png");
-            Textures.Add("down_arrow", "Content//Textures//down.png");
+            Textures.Add("_default_up_arrow", "Content//Textures//up.png");
+            Textures.Add("_default_down_arrow", "Content//Textures//down.png");
+            Textures.Add("_default_play_button", "Content//Textures//play_button.png");
+            Textures.Add("_default_pause_button", "Content//Textures//pause_button.png");
         }
 
         protected override void UnloadContent() {
