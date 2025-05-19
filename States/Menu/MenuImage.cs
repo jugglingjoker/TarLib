@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using TarLib.Entities.Drawable;
+using TarLib.Graphics;
 
 namespace TarLib.States {
+
     public class MenuImage : MenuBlock {
 
         public string TextureId { get; set; }
@@ -69,6 +72,7 @@ namespace TarLib.States {
             IGameMenu menu = default) : base(menu) {
             TextureId = textureId;
         }
+
 
         protected override void DrawContent(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position, float startDepth, float endDepth) {
             spriteBatch.Draw(
