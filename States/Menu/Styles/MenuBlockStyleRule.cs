@@ -5,7 +5,6 @@ using System.Collections.Generic;
 namespace TarLib.States {
 
     public abstract class IntStyle {
-
         public abstract int Value { get; }
 
         public static implicit operator IntStyle(int value) {

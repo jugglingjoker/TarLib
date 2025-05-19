@@ -44,5 +44,7 @@
         ButtonWithLabelContainer,
         InterfaceMenu,
         HorizontalLine,
+        ButtonsList,
+        ButtonsListButton,
     }
 }

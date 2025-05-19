@@ -41,5 +41,13 @@ namespace TarLib.States {
                 left: dimensions.horizontal,
                 right: dimensions.horizontal);
         }
+
+        public static PaddingStyle operator + (PaddingStyle style, int amount) {
+            return new PaddingStyle(
+                top: style.Top + amount,
+                bottom: style.Bottom + amount,
+                left: style.Left + amount,
+                right: style.Right + amount);
+        }
     }
 }

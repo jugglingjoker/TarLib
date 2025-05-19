@@ -49,5 +49,13 @@ namespace TarLib.States {
                 left: style.Left / divisor,
                 right: style.Right / divisor);
         }
+
+        public static BorderSizeStyle operator + (BorderSizeStyle style, int amount) {
+            return new BorderSizeStyle(
+                top: style.Top + amount,
+                bottom: style.Bottom + amount,
+                left: style.Left + amount,
+                right: style.Right + amount);
+        }
     }
 }
