@@ -57,9 +57,11 @@ namespace TarLib.States {
         public virtual void Draw(GameTime gameTime, float startDepth = 0, float endDepth = 1) {
             float Range = endDepth - startDepth;
             float RangeChunk = Range / Layers.Count;
+#if DEBUG
             if (startDepth < 0 || endDepth > 1 || Range <= 0) {
                 throw new Exception("Invalid start and end range. Valid range is between 0-1.");
             }
+#endif
 
             SpriteBatch.Begin(
                 sortMode: SpriteSortMode.FrontToBack,
