@@ -1,20 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using TarLib.Input;
 
 namespace TarLib.States {
-
-    public class MenuButtonWithInputLabel<TMenuButton> : MenuInputContainer<TMenuButton>
-        where TMenuButton : MenuButton {
-
-        public TMenuButton Button => Input;
-
-        protected override MenuBlockStyleTypeList StyleTypes => base.StyleTypes + MenuBlockStyleType.ButtonWithLabelContainer;
-
-        public MenuButtonWithInputLabel(TMenuButton button, string text, IGameMenu menu = null) : base(text, button, menu) {
-            
-        }
-    }
 
     public abstract class MenuButton : MenuContainer {
         public MenuButton(IGameMenu menu = default) : base(menu: menu) {
