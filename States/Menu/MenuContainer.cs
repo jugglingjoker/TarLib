@@ -175,7 +175,7 @@ namespace TarLib.States {
         }
 
         public class UpArrowButton : ArrowButton {
-            public UpArrowButton(VerticalScrollBar scrollBar, IGameMenu menu = null) : base("up_arrow", scrollBar, menu) {
+            public UpArrowButton(VerticalScrollBar scrollBar, IGameMenu menu = null) : base("_default_up_arrow", scrollBar, menu) {
                 DefaultStyle = new MenuBlockStyleRule() {
                     BorderBottom = 2,
                 } + DefaultStyle;
@@ -185,7 +185,7 @@ namespace TarLib.States {
         }
 
         public class DownArrowButton : ArrowButton {
-            public DownArrowButton(VerticalScrollBar scrollBar, IGameMenu menu = null) : base("down_arrow", scrollBar, menu) {
+            public DownArrowButton(VerticalScrollBar scrollBar, IGameMenu menu = null) : base("_default_down_arrow", scrollBar, menu) {
                 DefaultStyle = new MenuBlockStyleRule() {
                     BorderTop = 2,
                 } + DefaultStyle;
