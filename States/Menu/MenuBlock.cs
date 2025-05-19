@@ -210,21 +210,23 @@ namespace TarLib.States {
                 }
 
                 var drawRange = endDepth - startDepth;
+                var drawPosition = position + Margin.Position;
 
                 // TODO: Change to IDrawableBoxTexture
-                var drawPosition = position + Margin.Position;
-                spriteBatch.Draw(
-                    texture: BackgroundTexture,
-                    position: drawPosition,
-                    sourceRectangle: null,
-                    color: BorderColor.Top,
-                    rotation: 0,
-                    origin: Vector2.Zero,
-                    scale: BlockSize + BorderSize.Total,
-                    effects: SpriteEffects.None,
-                    layerDepth: startDepth);
+                if (BorderSize.Left != 0 || BorderSize.Right != 0 || BorderSize.Top != 0 || BorderSize.Bottom != 0) {
+                     spriteBatch.Draw(
+                        texture: BackgroundTexture,
+                        position: drawPosition,
+                        sourceRectangle: null,
+                        color: BorderColor.Top,
+                        rotation: 0,
+                        origin: Vector2.Zero,
+                        scale: BlockSize + BorderSize.Total,
+                        effects: SpriteEffects.None,
+                        layerDepth: startDepth);
+                    drawPosition += BorderSize.Position;
+                }
 
-                drawPosition += BorderSize.Position;
                 spriteBatch.Draw(
                     texture: BackgroundTexture,
                     position: drawPosition,
