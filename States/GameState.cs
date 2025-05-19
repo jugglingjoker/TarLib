@@ -4,8 +4,18 @@ using System;
 using TarLib.Input;
 
 namespace TarLib.States {
-    public abstract class GameState<TTarGame> : IGameState
+
+    public abstract class GameState<TTarGame> : GameState<TTarGame, IGameStateView>
         where TTarGame : TarGame {
+
+        public GameState(TTarGame game) : base(game) {
+
+        }
+    }
+
+    public abstract class GameState<TTarGame, TTarGameView> : IGameState
+        where TTarGame : TarGame
+        where TTarGameView : IGameStateView {
 
         protected readonly object objectLock = new();
 
@@ -15,12 +25,12 @@ namespace TarLib.States {
         public IGameMenu Menu { get; }
         protected SpriteBatch SpriteBatch { get; private set; }
 
-        private readonly ObservableVariable<IGameStateView> view = new();
-        public virtual IGameStateView View {
+        private readonly ObservableVariable<TTarGameView> view = new();
+        public virtual TTarGameView View {
             get => view.Value;
             set => view.Value = value;
         }
-        public event EventHandler<(IGameStateView oldValue, IGameStateView newValue)> OnViewChange {
+        public event EventHandler<(TTarGameView oldValue, TTarGameView newValue)> OnViewChange {
             add {
                 lock (objectLock) {
                     view.OnChange += value;
@@ -47,7 +57,7 @@ namespace TarLib.States {
             OnViewChange += GameState_OnViewChange;
         }
 
-        private void GameState_OnViewChange(object sender, (IGameStateView oldValue, IGameStateView newValue) e) {
+        private void GameState_OnViewChange(object sender, (TTarGameView oldValue, TTarGameView newValue) e) {
             e.oldValue?.End();
             e.newValue?.Start();
         }
