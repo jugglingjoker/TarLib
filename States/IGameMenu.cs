@@ -20,6 +20,8 @@ namespace TarLib.States {
 
         void Add(IMenuWindow window, string insertBefore = default, string insertAfter = default);
         void Remove(IMenuWindow window);
+        void Clear();
+
         void Update(GameTime gameTime);
         void Draw(GameTime gameTime, float startDepth = 0, float endDepth = 1);
     }

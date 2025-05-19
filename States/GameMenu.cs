@@ -64,6 +64,17 @@ namespace TarLib.States {
             }
         }
 
+        public void Clear() {
+            foreach(var window in Windows.ToList()) {
+                window.BeforeRemoveFromView();
+                Windows.RemoveAll(x => x == window);
+                BottomWindows.RemoveAll(x => x == window);
+                TopWindows.RemoveAll(x => x == window);
+                window.AfterRemoveFromView();
+            }
+            SetExclusiveWindow();
+        }
+
         private void SetExclusiveWindow() {
             ExclusiveWindow = null;
             ClickTarget = null;
