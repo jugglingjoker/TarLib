@@ -57,8 +57,8 @@ namespace TarLib.States {
 
         protected override MenuBlockStyleTypeList StyleTypes => MenuBlockStyleType.Window;
 
-        protected TWindowTitleBar TitleBar { get; }
-        protected TWindowContents Contents { get; }
+        public TWindowTitleBar TitleBar { get; }
+        public TWindowContents Contents { get; }
         public string Id { get; }
 
         public event EventHandler OnBeforeAddToView;
