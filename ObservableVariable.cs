@@ -3,9 +3,9 @@ using TarLib.States;
 
 namespace TarLib {
 
-    public class ObservableVariable<TVariableType> {
-        private TVariableType storedValue;
-        public TVariableType Value {
+    public class ObservableVariable<T> {
+        private T storedValue;
+        public T Value {
             get => storedValue;
             set {
                 if (!(storedValue?.Equals(value) ?? value == null)) {
@@ -16,17 +16,17 @@ namespace TarLib {
             }
         }
 
-        public event EventHandler<(TVariableType oldValue, TVariableType newValue)> OnChange;
+        public event EventHandler<(T oldValue, T newValue)> OnChange;
 
-        public ObservableVariable(TVariableType value = default) {
+        public ObservableVariable(T value = default) {
             Value = value;
         }
 
-        public void SetValueNoChange(TVariableType value) {
+        public void SetValueNoChange(T value) {
             storedValue = value;
         }
 
-        public static implicit operator TVariableType(ObservableVariable<TVariableType> observableVariable) {
+        public static implicit operator T(ObservableVariable<T> observableVariable) {
             return observableVariable.Value;
         }
     }

@@ -4,24 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace TarLib {
-    // TODO: Add observable dictionary
-    public class ObservableList<TVariableType> : IList<TVariableType>, IReadOnlyList<TVariableType> {
-        private List<TVariableType> items;
+
+    public class ObservableList<T> : IList<T>, IReadOnlyList<T> {
+        private List<T> items;
 
         public ObservableList() {
-            items = new List<TVariableType>();
+            items = new List<T>();
+            
         }
 
         public event EventHandler OnChange;
-        public event EventHandler<(int index, TVariableType oldValue, TVariableType newValue)> OnItemChange;
-        public event EventHandler<TVariableType> OnAdd;
-        public event EventHandler<TVariableType> OnRemove;
+        public event EventHandler<(int index, T oldValue, T newValue)> OnItemChange;
+        public event EventHandler<T> OnAdd;
+        public event EventHandler<T> OnRemove;
         public event EventHandler OnClear;
 
         public int Count => items.Count;
-        public bool IsReadOnly => ((ICollection<TVariableType>)items).IsReadOnly;
+        public bool IsReadOnly => ((ICollection<T>)items).IsReadOnly;
 
-        public TVariableType this[int index] {
+        public T this[int index] {
             get => items[index];
             set {
                 if(!(items[index]?.Equals(value) ?? value == null)) {
@@ -33,11 +34,11 @@ namespace TarLib {
             }
         }
 
-        public int IndexOf(TVariableType item) {
+        public int IndexOf(T item) {
             return items.IndexOf(item);
         }
 
-        public void Insert(int index, TVariableType item) {
+        public void Insert(int index, T item) {
             var oldValue = index < Count && index > 0 ? items[index] : default;
             items.Insert(index, item);
             OnAdd?.Invoke(this, item);
@@ -52,14 +53,14 @@ namespace TarLib {
             OnChange?.Invoke(this, default);
         }
 
-        public void Add(TVariableType item) {
+        public void Add(T item) {
             items.Add(item);
             OnAdd?.Invoke(this, item);
             OnChange?.Invoke(this, default);
             
         }
 
-        public void AddRange(IEnumerable<TVariableType> collection) {
+        public void AddRange(IEnumerable<T> collection) {
             items.AddRange(collection);
             foreach (var variable in collection) {
                 OnAdd?.Invoke(this, variable);
@@ -73,16 +74,16 @@ namespace TarLib {
             OnChange?.Invoke(this, default);
         }
 
-        public bool Contains(TVariableType item) {
+        public bool Contains(T item) {
             return items.Contains(item);
         }
 
-        public void CopyTo(TVariableType[] array, int arrayIndex) {
+        public void CopyTo(T[] array, int arrayIndex) {
             items.CopyTo(array, arrayIndex);
             OnChange?.Invoke(this, default);
         }
 
-        public bool Remove(TVariableType item) {
+        public bool Remove(T item) {
             var results = items.Remove(item);
             if(results) {
                 OnRemove?.Invoke(this, item);
@@ -91,11 +92,11 @@ namespace TarLib {
             return results;
         }
 
-        public List<TVariableType> ToList() {
+        public List<T> ToList() {
             return items.ToList();
         }
 
-        public IEnumerator<TVariableType> GetEnumerator() {
+        public IEnumerator<T> GetEnumerator() {
             return items.GetEnumerator();
         }
 
