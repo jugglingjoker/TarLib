@@ -45,7 +45,7 @@ namespace TarLib.States {
             get => SelectedButton != null ? SelectedButton.Value : default;
             set {
                 blocks.ForEach(menuBlock => menuBlock.IsSelected = false);
-                foreach (var menuBlock in MenuBlocks) {
+                foreach (var menuBlock in Blocks) {
                     if (menuBlock.Value.Equals(value)) {
                         menuBlock.IsSelected = true;
                         SelectedButton = menuBlock;

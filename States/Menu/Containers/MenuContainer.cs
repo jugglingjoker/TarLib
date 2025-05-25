@@ -6,7 +6,6 @@ using System.Linq;
 using TarLib.Input;
 
 namespace TarLib.States {
-
     public abstract class ScrollBar : MenuContainer {
         public ScrollBar(IMenuContainer container, IGameMenu menu = null) : base(menu) {
             Container = container;
@@ -141,7 +140,6 @@ namespace TarLib.States {
             CurrentPosition += amount;
         }
 
-        
         public UpArrowButton UpArrow { get; }
         public DownArrowButton DownArrow { get; }
         public ProgressIndicator Progress { get; }
@@ -247,58 +245,6 @@ namespace TarLib.States {
         }
     }
 
-    public abstract class MenuContainerPair<TFirstBlock, TSecondBlock> : MenuContainer 
-        where TFirstBlock : IMenuBlock
-        where TSecondBlock : IMenuBlock {
-
-        private ObservableVariable<TFirstBlock> firstBlock = new();
-        public TFirstBlock FirstBlock {
-            get => firstBlock.Value;
-            set {
-                firstBlock.Value = value;
-                blocks[0] = firstBlock.Value;
-            }
-        }
-
-        private ObservableVariable<TSecondBlock> secondBlock = new();
-        public TSecondBlock SecondBlock {
-            get => secondBlock.Value;
-            set {
-                secondBlock.Value = value;
-                blocks[1] = secondBlock.Value;
-            }
-        }
-
-        public MenuContainerPair(TFirstBlock firstBlock, TSecondBlock secondBlock, IGameMenu menu = null) : base(menu, default) {
-            base.Add(firstBlock);
-            base.Add(secondBlock);
-            FirstBlock = firstBlock;
-            SecondBlock = secondBlock;
-            this.secondBlock.OnChange += SecondBlock_OnChange;
-            this.firstBlock.OnChange += FirstBlock_OnChange;
-        }
-
-        private void SecondBlock_OnChange(object sender, (TSecondBlock oldValue, TSecondBlock newValue) e) {
-            NeedsRefresh = true;
-        }
-
-        private void FirstBlock_OnChange(object sender, (TFirstBlock oldValue, TFirstBlock newValue) e) {
-            NeedsRefresh = true;
-        }
-
-        public sealed override void Add(IMenuBlock menuBlock) {
-            // Do nothing
-        }
-
-        public sealed override void Remove(IMenuBlock menuBlock) {
-            // Do nothing
-        }
-
-        public sealed override void Clear() {
-            // Do nothing
-        }
-    }
-
     public class MenuContainer : MenuContainer<IMenuBlock> {
         protected override MenuBlockStyleTypeList StyleTypes => MenuBlockStyleType.Container;
 
@@ -309,14 +255,14 @@ namespace TarLib.States {
         }
     }
 
-    public abstract class MenuContainer<TMenuBlockType> : MenuBlock, IMenuContainer
-        where TMenuBlockType : IMenuBlock {
+    public abstract class MenuContainer<TMenuBlock> : MenuBlock, IMenuContainer<TMenuBlock>
+        where TMenuBlock : IMenuBlock {
 
         private SpriteBatch contentsSpriteBatch;
 
         public MenuContainer(
             IGameMenu menu = null,
-            List<TMenuBlockType> blocks = null) : base(menu) {
+            List<TMenuBlock> blocks = null) : base(menu) {
             if (blocks != null) {
                 foreach (var block in blocks) {
                     Add(block);
@@ -329,10 +275,8 @@ namespace TarLib.States {
             }
         }
 
-        protected List<TMenuBlockType> menuBlocks = new();
-        protected List<IMenuBlock> blocks = new();
-        public IReadOnlyList<TMenuBlockType> MenuBlocks => menuBlocks;
-        public IReadOnlyList<IMenuBlock> Blocks => blocks;
+        protected List<TMenuBlock> blocks = new();
+        public IReadOnlyList<TMenuBlock> Blocks => blocks;
 
         public VerticalScrollBar VerticalScrollBar { get; }
         public bool HasVerticalScrollBar => VerticalScrollBar != null && ActiveStyleRule.VerticalScroll == ScrollStyle.AlwaysShow || (ActiveStyleRule.VerticalScroll == ScrollStyle.Overflow && (ActiveStyleRule.HeightStyle == SizeStyle.Exact && ActiveStyleRule.HeightStyle == SizeStyle.FitContentMaximum) && ActiveStyleRule.Height != null && ActiveStyleRule.Height.Value > ContentActualHeight);
@@ -373,13 +317,15 @@ namespace TarLib.States {
             }
         }
 
-        public virtual void Add(IMenuBlock menuBlock) {
-            if (menuBlock is TMenuBlockType menuBlockType && menuBlockType != null) {
-                menuBlock.Parent = this;
-                blocks.Add(menuBlock);
-                menuBlocks.Add(menuBlockType);
-                NeedsRefresh = true;
-            }
+        public virtual void Add(TMenuBlock menuBlock) {
+            menuBlock.Parent = this;
+            blocks.Add(menuBlock);
+            NeedsRefresh = true;
+        }
+
+        public virtual void Remove(TMenuBlock menuBlock) {
+            blocks.Remove(menuBlock);
+            NeedsRefresh = true;
         }
 
         public bool Contains(IMenuBlock menuBlock) {
@@ -391,17 +337,8 @@ namespace TarLib.States {
             return false;
         }
 
-        public virtual void Remove(IMenuBlock menuBlock) {
-            if(menuBlock is TMenuBlockType menuBlockType && Contains(menuBlockType)) {
-                blocks.Remove(menuBlockType);
-                menuBlocks.Remove(menuBlockType);
-                NeedsRefresh = true;
-            }
-        }
-
         public virtual void Clear() {
             blocks.Clear();
-            menuBlocks.Clear();
             NeedsRefresh = true;
         }
 
@@ -550,12 +487,16 @@ namespace TarLib.States {
         }
     }
 
-    public interface IMenuContainer : IMenuBlock {
-        IReadOnlyList<IMenuBlock> Blocks { get; }
-        IMenuBlock GetBlockAtPoint(Point point, MouseButton? mouseButton = default);
+    public interface IMenuContainer<T> : IMenuContainer
+        where T : IMenuBlock {
+        IReadOnlyList<T> Blocks { get; }
 
-        void Add(IMenuBlock block);
-        void Remove(IMenuBlock block);
+        void Add(T block);
+        void Remove(T block);
+    }
+
+    public interface IMenuContainer : IMenuBlock {
+        IMenuBlock GetBlockAtPoint(Point point, MouseButton? mouseButton = default);
         bool Contains(IMenuBlock block);
     }
 }
