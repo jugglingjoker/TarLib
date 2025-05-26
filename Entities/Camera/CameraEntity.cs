@@ -7,6 +7,8 @@ namespace TarLib.Entities {
     public class CameraEntity<TEntityWithCamera> : IGameEntity<CameraEntity<TEntityWithCamera>.States>
         where TEntityWithCamera : IEntityWithCamera {
 
+        private const float MINIMUM_DISTANCE = 0.001f;
+
         public enum States {
             Idle,
             Moving
@@ -93,6 +95,8 @@ namespace TarLib.Entities {
         public event EventHandler<(float oldValue, float newValue)> OnZoomChange;
         public event EventHandler<(IEntityState<States> oldState, IEntityState<States> newState)> OnStateChange;
 
+        public bool IsMoving => (Position - Entity.CameraTarget).Length() > MINIMUM_DISTANCE;
+
         public CameraEntity(TEntityWithCamera entity) {
             Entity = entity;
 
@@ -127,6 +131,9 @@ namespace TarLib.Entities {
             currentSpeed = MathHelper.Clamp(currentSpeed + Entity.CameraAcceleration, 0, Math.Min(Position.DistanceTo(Entity.CameraTarget), Entity.CameraMaximumSpeed));
             currentAngle = Position.AngleTo(Entity.CameraTarget);
             Position += Vector2Extensions.AngleToVector2(currentAngle) * currentSpeed;
+            if(!IsMoving && Position != Entity.CameraTarget) {
+                Position = Entity.CameraTarget;
+            }
         }
 
         public Vector2 DrawPositionToRealPosition(Vector2 drawPosition) {
