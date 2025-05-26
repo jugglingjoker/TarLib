@@ -35,6 +35,7 @@ namespace TarLib.States {
             isHover.OnChange += IsHover_OnChange;
             isError.OnChange += IsError_OnChange;
             isSelected.OnChange += IsSelected_OnChange;
+            isActivate.OnChange += IsActivate_OnChange;
 
             style.OnChange += Style_OnChange;
 
@@ -408,6 +409,11 @@ namespace TarLib.States {
             IsActivate = false;
             IsHover = false;
             isActivateHoverCache = false;
+            NeedsRefresh = true;
+        }
+
+        private void IsActivate_OnChange(object sender, (bool oldValue, bool newValue) e) {
+            cachedActiveStyleRule = null;
             NeedsRefresh = true;
         }
 
