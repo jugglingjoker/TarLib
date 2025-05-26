@@ -5,19 +5,40 @@ namespace TarLib.States {
 
     public class MenuPlayButton : MenuToggleButton<MenuImage> {
 
-        public MenuPlayButton(bool isOn = false, IGameMenu menu = null) : base(isOn, menu) {
+        public event EventHandler OnPlay;
+        public event EventHandler OnPause;
 
+        public MenuPlayButton(bool isOn = false, IGameMenu menu = null) : base(isOn, menu) {
+            DefaultStyle = new MenuBlockStyle() {
+                Default = new MenuBlockStyleRule() {
+                    Padding = 4,
+                },
+                Activate = new MenuBlockStyleRule() {
+                    Padding = (6, 4, 2, 4),
+                }
+            } + base.DefaultStyle;
+
+            OnToggle += MenuPlayButton_OnToggle;
+            
+        }
+
+        private void MenuPlayButton_OnToggle(object sender, bool isPlaying) {
+            if(isPlaying) {
+                OnPlay?.Invoke(this, default);
+            } else {
+                OnPause?.Invoke(this, default);
+            }
         }
 
         protected override MenuImage CreateOffLabel() {
             return new MenuImage("_default_play_button", Menu) {
-                Scale = new Vector2(0.25f),
+                Scale = new Vector2(0.5f),
             };
         }
 
         protected override MenuImage CreateOnLabel() {
             return new MenuImage("_default_pause_button", Menu) {
-                Scale = new Vector2(0.25f),
+                Scale = new Vector2(0.5f),
             };
         }
     }
